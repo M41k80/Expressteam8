@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     const navLinks = [
         { href: "/dashboard", label: "Inicio", icon: LayoutDashboard },
-        { href: "/dashboard/emails", label: "Mis Correos", icon: Mail },
+        { href: "/dashboard/history", label: "Mis Correos", icon: Mail },
         { href: "/dashboard/settings", label: "Configuración", icon: Settings },
     ];
 
