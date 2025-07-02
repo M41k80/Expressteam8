@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ai-powered-parent</artifactId>
+    <groupId>com.ai-powered.app</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.ai-powered.app.businessdomain</groupId>
+  <artifactId>businessdomain</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>businessdomain</name>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>engagement-service</module>
+    <module>mail-service</module>
+    <module>user-service</module>
+  </modules>
+
+  <properties>
+  </properties>
+
+
+
+  <dependencies>
+
+  </dependencies>
+
+  <build>
+
+  </build>
+</project>
