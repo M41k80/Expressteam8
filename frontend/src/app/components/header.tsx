@@ -9,17 +9,18 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Menu } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
     return (
         <header className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center gap-4">
                 <Link href="/" className="text-xl font-bold">
-                    IA Email App
+                    <Image src="/App.png" alt="Logo" width={120} height={80} />
                 </Link>
 
 
-                <nav className="hidden md:flex gap-4">
+                <nav className="hidden md:flex gap-8">
                     <Link href="/features" className="hover:underline">
                         Características
                     </Link>
@@ -73,10 +74,10 @@ export default function Header() {
 
                 <div className="hidden md:flex items-center gap-2">
                     <ModeToggle />
-                    <Button asChild variant="outline">
+                    <Button asChild variant="outline" className="hover:bg-[#4FC3F7]">
                         <Link href="/login">Iniciar Sesión</Link>
                     </Button>
-                    <Button asChild>
+                    <Button asChild className="bg-[#4FC3F7] hover:bg-[#29B6F6]">
                         <Link href="/register">Registrarse</Link>
                     </Button>
                 </div>

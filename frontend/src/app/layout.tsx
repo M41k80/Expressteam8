@@ -7,6 +7,19 @@ import { ThemeProvider } from "./components/theme-provider";
 export const metadata: Metadata = {
   title: "Tu App de Emails con IA",
   description: "Genera Emails impresionantes con Inteligencia Artificial",
+  keywords: ["Email", "IA", "Productividad"],
+  authors: [
+    {
+      name: "M41K80",
+      url: "https://github.com/M41K80",
+    },
+  ],
+  icons: {
+    icon: "/App.png",
+    shortcut: "/App.png",
+    apple: "/App.png",
+  },
+
 };
 
 export default function RootLayout({

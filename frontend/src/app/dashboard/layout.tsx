@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { ModeToggle } from "../components/mode-toogle";
 import clsx from "clsx";
+import Image from "next/image";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +29,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
 
             <aside className="hidden md:flex w-64 flex-col border-r p-4 bg-muted/30 z-10">
-                <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-                    <LayoutDashboard className="w-5 h-5" />
-                    Panel
-                </h2>
+                <Image src="/App.png" alt="Logo" width={120} height={80} />
                 <ModeToggle />
                 <nav className="flex flex-col gap-1 mt-4">
                     {navLinks.map(({ href, label, icon: Icon }) => (

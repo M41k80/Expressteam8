@@ -9,15 +9,16 @@ export default function Home() {
     <main className="min-h-screen bg-background text-foreground">
       <Header />
       <section className="flex flex-col items-center justify-center text-center py-24 px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          Genera emails que convierten con IA
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center">
+          Tus Emails, potenciados por Inteligencia 
         </h1>
-        <p className="text-muted-foreground mb-6 max-w-xl">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center text-[#4FC3F7]">Artificial</h1>
+        <p className="text-muted-foreground text-xl mb-8 max-w-xl p-16">
           Nuestra plataforma utiliza inteligencia artificial para crear correos
           electrónicos efectivos en minutos.
         </p>
-        <Button size="lg" asChild>
-          <Link href="/register">Comienza Gratis</Link>
+        <Button className="bg-[#4FC3F7] hover:bg-[#29B6F6] p-8" size="lg" asChild>
+          <Link className="text-white" href="/register">Comienza Gratis</Link>
         </Button>
       </section>
       <footer className="bg-background text-foreground py-80">
