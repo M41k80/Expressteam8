@@ -38,10 +38,11 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByUsername(req.username())) {
             throw new UserAlreadyExistsException(req.username());
         }
+        String role = (req.role() != null) ? req.role() : "ROLE_USER";
         User user = User.builder()
                 .username(req.username())
                 .password(passwordEncoder.encode(req.password()))
-                .role("ROLE_USER")
+                .role(role)
                 .build();
         userRepository.save(user);
 
