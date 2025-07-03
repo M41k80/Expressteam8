@@ -5,7 +5,7 @@ export default function FAQ() {
   return (
     <main>
       <Header />
-      <section id="faq" className="py-32 bg-muted/50">
+      <section id="faq" className="py-32 ">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8 text-center py-16">
             Preguntas Frecuentes

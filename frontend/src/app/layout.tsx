@@ -5,7 +5,7 @@ import { ThemeProvider } from "./components/theme-provider";
 
 
 export const metadata: Metadata = {
-  title: "Tu App de Emails con IA",
+  title: "Tu App de Emails con AI",
   description: "Genera Emails impresionantes con Inteligencia Artificial",
   keywords: ["Email", "IA", "Productividad"],
   authors: [

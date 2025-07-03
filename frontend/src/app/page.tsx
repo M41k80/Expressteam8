@@ -13,7 +13,7 @@ export default function Home() {
           Tus Emails, potenciados por Inteligencia 
         </h1>
         <h1 className="text-4xl md:text-6xl font-bold mb-4 text-center text-[#4FC3F7]">Artificial</h1>
-        <p className="text-muted-foreground text-xl mb-8 max-w-xl p-16">
+        <p className="text-muted-foreground text-2xl mb-8 max-w-xl p-16">
           Nuestra plataforma utiliza inteligencia artificial para crear correos
           electrónicos efectivos en minutos.
         </p>
@@ -21,7 +21,7 @@ export default function Home() {
           <Link className="text-white" href="/register">Comienza Gratis</Link>
         </Button>
       </section>
-      <footer className="bg-background text-foreground py-80">
+      <footer className="bg-background text-foreground py-60">
         <Footer />
       </footer>
       
