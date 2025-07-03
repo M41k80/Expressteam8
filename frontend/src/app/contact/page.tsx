@@ -47,12 +47,12 @@ export default function ContactPage() {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-primary text-primary-foreground font-medium py-2 rounded hover:opacity-90"
+                        className="w-full bg-[#4FC3F7] hover:bg-[#29B6F6] hover font-medium py-2 rounded hover:opacity-90"
                     >
                         Enviar Mensaje
                     </button>
                 </form>
-                <footer className="mt-72">
+                <footer className="mt-32">
                     <Footer />
                 </footer>
                     

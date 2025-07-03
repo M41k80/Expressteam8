@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
+
 export default function DashboardHome() {
   const [prompt, setPrompt] = useState("");
   const [generated, setGenerated] = useState("");
@@ -16,7 +17,9 @@ export default function DashboardHome() {
   };
 
   return (
+    
     <div className="space-y-6">
+       
       <h1 className="text-2xl font-bold">Generar Email</h1>
       <Textarea
         placeholder="Describe qué correo quieres generar..."
