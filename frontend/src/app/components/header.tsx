@@ -16,7 +16,7 @@ export default function Header() {
         <header className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center gap-4">
                 <Link href="/" className="text-xl font-bold">
-                    <Image src="/App.png" alt="Logo" width={120} height={80} />
+                    <Image src="/App.png" alt="Logo" width={120} height={80} className="rounded-full" />
                 </Link>
 
 
