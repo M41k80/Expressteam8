@@ -1,7 +1,7 @@
 package com.ai_powered.app.user_service.controller;
 
 import com.ai_powered.app.user_service.dto.UpdateUserRequest;
-import com.ai_powered.app.user_service.model.User;
+import com.ai_powered.app.user_service.dto.UserResponse;
 import com.ai_powered.app.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +22,8 @@ public class UserController {
      */
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<User>> listAll() {
-        List<User> users = userService.listAll();
+    public ResponseEntity<List<UserResponse>> listAll() {
+        List<UserResponse> users = userService.listAll();
         return ResponseEntity.ok(users);
     }
 
@@ -32,8 +32,8 @@ public class UserController {
      */
     @GetMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') and #id == principal.id)")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userService.getById(id);
+    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) {
+        UserResponse user = userService.getById(id);
         return ResponseEntity.ok(user);
     }
 
@@ -42,11 +42,11 @@ public class UserController {
      */
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or (hasRole('USER') and #id == principal.id)")
-    public ResponseEntity<User> updateUser(
+    public ResponseEntity<UserResponse> updateUser(
             @PathVariable Long id,
             @RequestBody UpdateUserRequest dto
     ) {
-        User updated = userService.updateUser(id, dto);
+        UserResponse updated = userService.updateUser(id, dto);
         return ResponseEntity.ok(updated);
     }
 

@@ -1,7 +1,11 @@
 package com.ai_powered.app.user_service.service.impl;
 
 import com.ai_powered.app.user_service.config.security.TokenService;
-import com.ai_powered.app.user_service.dto.*;
+import com.ai_powered.app.user_service.dto.AuthenticationResponse;
+import com.ai_powered.app.user_service.dto.LoginRequest;
+import com.ai_powered.app.user_service.dto.RegisterRequest;
+import com.ai_powered.app.user_service.dto.UpdateUserRequest;
+import com.ai_powered.app.user_service.dto.UserResponse;
 import com.ai_powered.app.user_service.error.UserAlreadyExistsException;
 import com.ai_powered.app.user_service.error.UserNotFoundException;
 import com.ai_powered.app.user_service.model.User;
@@ -9,12 +13,15 @@ import com.ai_powered.app.user_service.repository.UserRepository;
 import com.ai_powered.app.user_service.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.*;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -50,10 +57,6 @@ public class UserServiceImpl implements UserService {
         } catch (BadCredentialsException ex) {
             throw new BadCredentialsException("Usuario o contraseña incorrectos");
         }
-        var authToken = new UsernamePasswordAuthenticationToken(
-                req.username(), req.password());
-        authenticationManager.authenticate(authToken);
-
         User user = userRepository.findByUsername(req.username())
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         String token = tokenService.generateToken(user);
@@ -61,39 +64,55 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+    public UserResponse getById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Usuario con id=" + id + " no encontrado"));
+        return toDTO(user);
     }
 
     @Override
     @Transactional
-    public User updateUser(Long id, UpdateUserRequest dto) {
-        User user = getById(id);
+    public UserResponse updateUser(Long id, UpdateUserRequest dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Usuario con id=" + id + " no encontrado"));
 
         if (dto.username() != null && !dto.username().equals(user.getUsername())) {
             if (userRepository.existsByUsername(dto.username())) {
-                throw new IllegalArgumentException("El nombre de usuario ya existe");
+                throw new UserAlreadyExistsException(dto.username());
             }
             user.setUsername(dto.username());
         }
         if (dto.role() != null) {
             user.setRole(dto.role());
         }
-        return userRepository.save(user);
+        User updated = userRepository.save(user);
+        return toDTO(updated);
     }
 
     @Override
     @Transactional
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new UserNotFoundException("Usuario no encontrado");
+            throw new UserNotFoundException("Usuario con id=" + id + " no encontrado");
         }
         userRepository.deleteById(id);
     }
 
     @Override
-    public List<User> listAll() {
-        return userRepository.findAll();
+    public List<UserResponse> listAll() {
+        return userRepository.findAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    private UserResponse toDTO(User user) {
+        return new UserResponse(
+                user.getId(),
+                user.getUsername(),
+                user.getRole(),
+                user.getCreatedAt(),
+                user.getUpdatedAt()
+        );
     }
 }
