@@ -75,10 +75,10 @@ export default function Header() {
                 <div className="hidden md:flex items-center gap-2">
                     <ModeToggle />
                     <Button asChild variant="outline" className="hover:bg-[#4FC3F7]">
-                        <Link href="/login">Iniciar Sesión</Link>
+                        <Link href="/auth/login">Iniciar Sesión</Link>
                     </Button>
                     <Button asChild className="bg-[#4FC3F7] hover:bg-[#29B6F6]">
-                        <Link href="/register">Registrarse</Link>
+                        <Link href="/auth/register">Registrarse</Link>
                     </Button>
                 </div>
             </div>
