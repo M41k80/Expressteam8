@@ -2,6 +2,8 @@ package com.ai_powered.app.user_service.service.impl;
 
 import com.ai_powered.app.user_service.config.security.TokenService;
 import com.ai_powered.app.user_service.dto.*;
+import com.ai_powered.app.user_service.error.UserAlreadyExistsException;
+import com.ai_powered.app.user_service.error.UserNotFoundException;
 import com.ai_powered.app.user_service.model.User;
 import com.ai_powered.app.user_service.repository.UserRepository;
 import com.ai_powered.app.user_service.service.UserService;
@@ -27,7 +29,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public AuthenticationResponse register(RegisterRequest req) {
         if (userRepository.existsByUsername(req.username())) {
-            throw new IllegalArgumentException("El nombre de usuario ya existe");
+            throw new UserAlreadyExistsException(req.username());
         }
         User user = User.builder()
                 .username(req.username())
@@ -42,6 +44,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AuthenticationResponse authenticate(LoginRequest req) {
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(req.username(), req.password()));
+        } catch (BadCredentialsException ex) {
+            throw new BadCredentialsException("Usuario o contraseña incorrectos");
+        }
         var authToken = new UsernamePasswordAuthenticationToken(
                 req.username(), req.password());
         authenticationManager.authenticate(authToken);
@@ -79,7 +87,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new UsernameNotFoundException("Usuario no encontrado");
+            throw new UserNotFoundException("Usuario no encontrado");
         }
         userRepository.deleteById(id);
     }

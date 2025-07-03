@@ -2,6 +2,7 @@ package com.ai_powered.app.user_service.controller;
 
 import com.ai_powered.app.user_service.dto.LoginRequest;
 import com.ai_powered.app.user_service.dto.RegisterRequest;
+import com.ai_powered.app.user_service.error.BadRequestBodyException;
 import com.ai_powered.app.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,9 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponseDTO> register(@RequestBody RegisterRequest datos) {
+        if (datos == null) {
+            throw new BadRequestBodyException("El cuerpo de la solicitud no puede estar vacío");
+        }
         var authResponse = userService.register(datos);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
