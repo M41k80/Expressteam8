@@ -1,11 +1,12 @@
 import axios from 'axios';
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     Accept: 'application/json',
   },
 });
+
 
 axiosInstance.interceptors.request.use((config) => {
   return config;
