@@ -5,10 +5,13 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
+import { useAuth } from '@/app/context/AuthContext';
 import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
 
 const RegisterForm = () => {
+  const { register } = useAuth();
+
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -40,17 +43,25 @@ const RegisterForm = () => {
     if (!formData.username.trim()) newErrors.username = 'El nombre de usuario es obligatorio.';
     if (!formData.email.trim()) newErrors.email = 'El correo es obligatorio.';
     if (!formData.password) newErrors.password = 'La contraseña es obligatoria.';
-    if (!formData.confirmPassword) newErrors.confirmPassword = 'Debe repetir la contraseña.';
-    if (formData.password && formData.confirmPassword && formData.password !== formData.confirmPassword)
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Debe repetir la contraseña.';
+    } else if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Las contraseñas no coinciden.';
+    }
 
     setErrors(newErrors);
     return Object.values(newErrors).every((error) => error === '');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    
+    e.preventDefault();
 
+    if (!validate()) return;
+    register({
+      username: formData.username,
+      email: formData.email,
+      password: formData.password,
+    });
   };
 
   return (

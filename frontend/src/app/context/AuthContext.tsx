@@ -7,7 +7,7 @@ import { authService } from '@/services/authService';
 type AuthContextType = {
   user: User | null;
   login: (userData: User) => void;
-  register: (userData: User) => void;
+  register: (userData: any) => void;
   logout: () => void;
 };
 
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(response.data); 
   };
 
-  const register = async (userData: User) => {
+  const register = async (userData: any) => {
     const response = await authService.register(userData);
     setUser(response.data);
   };
