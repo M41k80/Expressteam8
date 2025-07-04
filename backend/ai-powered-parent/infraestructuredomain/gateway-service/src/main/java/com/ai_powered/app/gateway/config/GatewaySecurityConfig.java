@@ -79,7 +79,7 @@ public class GatewaySecurityConfig {
                 )
                 .authorizeExchange(ex -> ex
                         .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .pathMatchers("/auth/**", "/api/auth/**").permitAll()
+                        .pathMatchers("/auth/**", "/api/auth/**", "/auth/register", "/auth/login").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
