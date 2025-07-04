@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
+import Header from '@/app/components/header';
+import Footer from '@/app/components/footer';
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -23,7 +25,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted px-4">
+    <main>
+      <Header />
+      <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <Card className="w-full max-w-md shadow-xl">
         <CardHeader className="text-center space-y-1">
           <CardTitle className="text-2xl">Iniciar sesión</CardTitle>
@@ -54,13 +58,16 @@ const LoginForm = () => {
                 required
               />
             </div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full bg-[#4FC3F7] hover:bg-[#29B6F6]">
               Entrar
             </Button>
           </form>
         </CardContent>
       </Card>
     </div>
+    <Footer />
+    </main>
+    
   );
 };
 

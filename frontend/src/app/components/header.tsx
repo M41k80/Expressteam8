@@ -60,10 +60,10 @@ export default function Header() {
                                 <Link href="/contact" className="hover:underline">
                                     Contacto
                                 </Link>
-                                <Link href="/login" className="hover:underline">
+                                <Link href="/auth/login" className="hover:underline">
                                     Iniciar Sesión
                                 </Link>
-                                <Link href="/register" className="hover:underline">
+                                <Link href="/auth/register" className="hover:underline">
                                     Registrarse
                                 </Link>
 
