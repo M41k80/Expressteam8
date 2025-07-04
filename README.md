@@ -2,8 +2,8 @@
 <img src="frontend/public/App.png" alt="App logo" width="400"/>
  🧩 Creadores de la App:
 
-### 👥 Daniel Renato Mamani Pérez 📧 danny2003renato@gmail.com 💻 Rol: Frontend
 ### 👥 Magdiel Mora 📧 m41k80m@gmail.com 💻 Rol: Frontend
+### 👥 Daniel Renato Mamani Pérez 📧 danny2003renato@gmail.com 💻 Rol: Frontend
 ### 👥 Jeremias Rivelli 📧 jeremias.j.riv@gmail.com 💻 Rol: Backend
 ### 👥 Mateo Baccillere 📧 mateo.baccillere19@gmail.com 💻 Rol: Backend
 ### 👥 Wanda ursula gutierrez 📧 wandaugutierrez@gmail.com 💻 Rol: UX/UI Designer
@@ -159,3 +159,50 @@ LinkedIn: https://www.linkedin.com/in/jose-magdiel-mora-perez-0384492b9/
 ⸻
 
 Expressteam8 - Potencia tu marketing con inteligencia artificial
+
+
+🌱 Roadmap – Posibles Mejoras Futuras
+
+A continuación se detallan algunas ideas de funcionalidades que podrían implementarse en versiones futuras para ampliar las capacidades de la aplicación:
+
+✅ Personalización avanzada de tono y estilo
+	•	Permitir que el usuario seleccione si el correo debe sonar formal, amistoso, urgente, etc.
+	•	Ajuste de la longitud y el nivel de detalle del contenido.
+
+✅ Plantillas predefinidas
+	•	Ofrecer plantillas de marketing listas para usar (bienvenida, promoción, recuperación de carrito, fidelización).
+	•	Sistema de favoritos para guardar plantillas propias.
+
+✅ Multilingüe
+	•	Generación automática de correos en otros idiomas (español, inglés, portugués, etc.).
+
+✅ Editor enriquecido
+	•	Editor visual con formato (negrita, listas, enlaces).
+	•	Previsualización del correo en distintos clientes de email.
+
+✅ Envío directo
+	•	Integración con servicios de emailing (Mailchimp, SendGrid, SMTP propio).
+	•	Programación de envíos y seguimiento.
+
+✅ Historial mejorado
+	•	Etiquetas y filtros por tipo de correo o campaña.
+	•	Estadísticas de uso y generación por usuario.
+
+✅ Gestión de equipos y colaboración
+	•	Roles de usuario (administrador, editor).
+	•	Compartir correos generados con miembros del equipo.
+
+✅ IA más inteligente
+	•	Sugerencias automáticas basadas en la industria o el objetivo de la campaña.
+	•	A/B testing de asunto y contenido.
+
+✅ Seguridad y auditoría
+	•	Registros de actividad detallados.
+	•	Autenticación en dos pasos y políticas de acceso avanzadas.
+
+✅ Integraciones
+	•	Conexión con CRMs (Hubspot, Salesforce).
+	•	Integración con plataformas eCommerce (Shopify, WooCommerce).
+
+✅ API pública
+	•	Exponer endpoints seguros que permitan generar correos de forma programática desde otras aplicaciones.
