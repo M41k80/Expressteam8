@@ -1,6 +1,6 @@
 # Expressteam8
 <img src="frontend/public/App.png" alt="App logo" width="400"/>
-## 🧩 Creadores de la App:
+ 🧩 Creadores de la App:
 
 ### 👥 Daniel Renato Mamani Pérez 📧 danny2003renato@gmail.com 💻 Rol: Frontend
 ### 👥 Magdiel Mora 📧 m41k80m@gmail.com 💻 Rol: Frontend
