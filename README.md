@@ -1,4 +1,4 @@
-# Expressteam8
+# Express team8 
 <img src="frontend/public/App.png" alt="App logo" width="400"/>
  🧩 Creadores de la App:
 
