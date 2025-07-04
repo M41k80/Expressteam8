@@ -14,7 +14,7 @@ public class CorsGlobalConfiguration {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         // **No uses “*” cuando allowCredentials=true**, mejor lista explícita:
-        config.setAllowedOrigins(List.of("http://ejemplo.com"));
+        config.setAllowedOrigins(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
