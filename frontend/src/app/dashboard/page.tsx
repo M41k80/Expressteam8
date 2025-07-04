@@ -12,7 +12,6 @@ export default function DashboardHome() {
   const [showPreview, setShowPreview] = useState(false);
 
   const handleGenerate = () => {
-    // Aquí llamas a tu API o a OpenAI
     setGenerated(`📧 Ejemplo de correo generado para: "${prompt}"`);
   };
 
