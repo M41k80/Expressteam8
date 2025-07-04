@@ -15,7 +15,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.jwt.NimbusReactiveJwtDecoder;
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.web.cors.reactive.CorsConfigurationSource;
+import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 import org.springframework.web.server.WebFilter;
 
 import java.util.Base64;
@@ -28,6 +28,36 @@ public class GatewaySecurityConfig {
     private String jwtSecretBase64;
 
     private SecretKey secretKey;
+
+    // 1) Chain para las rutas públicas
+    @Bean
+    @Order(0)
+    public SecurityWebFilterChain publicApi(ServerHttpSecurity http) {
+        return http
+                // aplicamos este chain solo si la ruta coincide con /api/auth/** o /api/users/**
+                .securityMatcher(ServerWebExchangeMatchers.pathMatchers("/api/auth/**", "/api/users/**"))
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .authorizeExchange(ex -> ex
+                        .anyExchange().permitAll()
+                )
+                .build();
+    }
+
+    // 2) Chain para el resto de rutas (requiere JWT)
+    @Bean
+    @Order(1)
+    public SecurityWebFilterChain authenticatedApi(ServerHttpSecurity http) {
+        return http
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
+                .authorizeExchange(ex -> ex
+                        .pathMatchers(HttpMethod.OPTIONS).permitAll()  // pre-flight
+                        .anyExchange().authenticated()
+                )
+                .oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwt -> jwt.jwtDecoder(jwtDecoder()))
+                )
+                .build();
+    }
 
     @PostConstruct
     public void init() {
@@ -58,29 +88,4 @@ public class GatewaySecurityConfig {
             return chain.filter(exchange);
         };
     }
-
-    @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http,
-                                                            CorsConfigurationSource corsSource) {
-        return http
-                .cors(cors -> cors.configurationSource(corsSource))
-                .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .authorizeExchange(ex -> ex
-                        // Opciones siempre abiertas
-                        .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-
-                        // Tu user-service usa /api/auth y /api/users
-                        .pathMatchers("/api/auth/**", "/api/users/**").permitAll()
-                        // También deja abiertos los internals si quieres
-                        .pathMatchers("/auth/**", "/users/**").permitAll()
-
-                        // El resto requiere JWT
-                        .anyExchange().authenticated()
-                )
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.jwtDecoder(jwtDecoder()))
-                )
-                .build();
-    }
-
 }
