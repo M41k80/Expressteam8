@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
+import Header from '@/app/components/header';
+import Footer from '@/app/components/footer';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -49,70 +51,76 @@ const RegisterForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    
+
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted px-4">
-      <Card className="w-full max-w-md shadow-xl">
-        <CardHeader className="text-center space-y-1">
-          <CardTitle className="text-2xl">Registrarse</CardTitle>
-          <p className="text-sm text-muted-foreground">Crea tu cuenta</p>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-1">
-              <Label htmlFor="username">Usuario</Label>
-              <Input
-                id="username"
-                placeholder="Ej. NoCountryUser"
-                value={formData.username}
-                onChange={handleChange}
-              />
-              {errors.username && <p className="text-sm text-red-500">{errors.username}</p>}
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="email">Correo</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="correo@ejemplo.com"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="password">Contraseña</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="confirmPassword">Repetir contraseña</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="••••••••"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-              />
-              {errors.confirmPassword && (
-                <p className="text-sm text-red-500">{errors.confirmPassword}</p>
-              )}
-            </div>
-            <Button type="submit" className="w-full">
-              Registrarse
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-    </div>
+    <main className="min-h-screen flex flex-col bg-muted">
+      <Header />
+
+      <div className="flex-1 flex justify-center px-4 py-12">
+        <Card className="w-full max-w-sm shadow-xl bg-background">
+          <CardHeader className="text-center space-y-1">
+            <CardTitle className="text-2xl">Registrarse</CardTitle>
+            <p className="text-sm text-muted-foreground">Crea tu cuenta</p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-1">
+                <Label htmlFor="username">Usuario</Label>
+                <Input
+                  id="username"
+                  placeholder="Ej. danielr"
+                  value={formData.username}
+                  onChange={handleChange}
+                />
+                {errors.username && <p className="text-sm text-red-500">{errors.username}</p>}
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="email">Correo</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="correo@ejemplo.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="password">Contraseña</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                {errors.password && <p className="text-sm text-red-500">{errors.password}</p>}
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="confirmPassword">Repetir contraseña</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="••••••••"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                />
+                {errors.confirmPassword && (
+                  <p className="text-sm text-red-500">{errors.confirmPassword}</p>
+                )}
+              </div>
+              <Button type="submit" className="w-full bg-[#4FC3F7] hover:bg-[#29B6F6]">
+                Registrarse
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+
+      <Footer />
+    </main>
   );
 };
 
