@@ -7,7 +7,7 @@
 ### 👥 Jeremias Rivelli 📧 jeremias.j.riv@gmail.com 💻 Rol: Backend
 ### 👥 Mateo Baccillere 📧 mateo.baccillere19@gmail.com 💻 Rol: Backend
 ### 👥 Wanda ursula gutierrez 📧 wandaugutierrez@gmail.com 💻 Rol: UX/UI Designer
-### 👥 Luis Prado 📧 luisprado.qa@gmail.com 💻 Rol: Tester QA
+
 
 
 > **Tus Emails, potenciados por Inteligencia Artificial**  
