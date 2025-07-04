@@ -18,13 +18,12 @@ export default function Home() {
           electrónicos efectivos en minutos.
         </p>
         <Button className="bg-[#4FC3F7] hover:bg-[#29B6F6] p-8" size="lg" asChild>
-          <Link className="text-white" href="/register">Comienza Gratis</Link>
+          <Link className="text-white" href="/auth/register">Comienza Gratis</Link>
         </Button>
       </section>
       <footer className="bg-background text-foreground py-60">
         <Footer />
       </footer>
-      
     </main>
   );
 }

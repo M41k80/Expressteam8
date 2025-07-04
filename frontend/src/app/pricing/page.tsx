@@ -46,7 +46,7 @@ export default function Prices() {
                   </ul>
                 </div>
                 <Button className="bg-[#4FC3F7] hover:bg-[#29B6F6] p-6" size="lg" asChild>
-                  <Link href="/register">Elegir Plan</Link>
+                  <Link href="/auth/register">Elegir Plan</Link>
                 </Button>
               </div>
             ))}
