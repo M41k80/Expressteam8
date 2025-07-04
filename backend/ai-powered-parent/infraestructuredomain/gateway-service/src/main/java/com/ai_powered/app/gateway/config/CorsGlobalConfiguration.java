@@ -10,11 +10,13 @@ import java.util.List;
 
 @Configuration
 public class CorsGlobalConfiguration {
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // **No uses “*” cuando allowCredentials=true**, mejor lista explícita:
-        config.setAllowedOrigins(List.of("*"));
+
+        // Usá origin patterns en vez de allowed origins cuando allowCredentials=true
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
