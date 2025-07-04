@@ -12,6 +12,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.jwt.NimbusReactiveJwtDecoder;
 import org.springframework.security.oauth2.jwt.ReactiveJwtDecoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.cors.reactive.CorsConfigurationSource;
 
 import java.util.Base64;
 
@@ -42,11 +43,12 @@ public class GatewaySecurityConfig {
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http,
+                                                            CorsConfigurationSource corsSource) {
         return http
-                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(corsSource))
+                .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchanges -> exchanges
-                        // Permití ambos, sin o con /api
                         .pathMatchers("/auth/**", "/api/auth/**").permitAll()
                         .anyExchange().authenticated()
                 )
