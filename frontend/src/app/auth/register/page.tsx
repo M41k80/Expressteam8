@@ -49,8 +49,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
+    
 
   };
 
