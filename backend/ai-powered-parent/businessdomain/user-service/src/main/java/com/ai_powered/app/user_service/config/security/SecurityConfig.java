@@ -33,6 +33,8 @@ public class SecurityConfig {
                     req.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     req.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
                     req.requestMatchers(HttpMethod.POST, "/auth/register").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "api/auth/login").permitAll();
+                    req.requestMatchers(HttpMethod.POST, "api/auth/register").permitAll();
                     req.anyRequest().authenticated();
                 })
 
