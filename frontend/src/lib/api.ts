@@ -1,4 +1,3 @@
-// create api service use axios
 import { axiosInstance } from './axiosInstance';
 import type { ApiResponse } from '../types/ApiResponse';
 import type { AxiosRequestConfig } from 'axios';
@@ -8,7 +7,7 @@ type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 export async function api<T>(
   url: string,
   method: HttpMethod = 'GET',
-  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data?: any,
   config?: AxiosRequestConfig
 ): Promise<ApiResponse<T>> {
@@ -36,6 +35,7 @@ export async function api<T>(
     }
 
     return response.data;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     if (error.response?.data?.message) {
       throw new Error(error.response.data.message);
