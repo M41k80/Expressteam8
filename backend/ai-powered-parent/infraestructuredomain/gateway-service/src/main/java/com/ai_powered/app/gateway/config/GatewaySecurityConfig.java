@@ -65,21 +65,16 @@ public class GatewaySecurityConfig {
         return http
                 .cors(cors -> cors.configurationSource(corsSource))
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
-                .exceptionHandling(exc -> exc
-                        // Captura fallos de autenticación (p.ej. falta JWT)
-                        .authenticationEntryPoint((exchange, ex) -> {
-                            System.err.println("❌ AuthenticationEntryPoint: " + ex.getMessage());
-                            return exchange.getResponse().setComplete();
-                        })
-                        // Captura denegaciones de acceso (p.ej. permitAll mal configurado)
-                        .accessDeniedHandler((exchange, denied) -> {
-                            System.err.println("❌ AccessDeniedHandler: " + denied.getMessage());
-                            return exchange.getResponse().setComplete();
-                        })
-                )
                 .authorizeExchange(ex -> ex
+                        // Opciones siempre abiertas
                         .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                        .pathMatchers("/auth/**", "/api/auth/**", "/auth/register", "/auth/login").permitAll()
+
+                        // Tu user-service usa /api/auth y /api/users
+                        .pathMatchers("/api/auth/**", "/api/users/**").permitAll()
+                        // También deja abiertos los internals si quieres
+                        .pathMatchers("/auth/**", "/users/**").permitAll()
+
+                        // El resto requiere JWT
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
