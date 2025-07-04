@@ -50,8 +50,7 @@ public class GatewaySecurityConfig {
                         // 1) Pre-flight CORS
                         .pathMatchers(HttpMethod.OPTIONS).permitAll()
                         // 2) Endpoints públicos de auth y usuarios
-                        .pathMatchers("/api/auth/**", "/auth/**",
-                                "/api/users/**", "/users/**").permitAll()
+                        .pathMatchers("/auth/**", "/users/**").permitAll()
                         // 3) TODO lo demás debe llevar JWT
                         .anyExchange().authenticated()
                 )
