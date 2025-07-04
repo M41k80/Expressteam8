@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return (
         <DashboardProvider>
             <main className="min-h-screen flex flex-col md:flex-row bg-background text-foreground relative">
-                <Toaster />
+                <Toaster theme="dark" />
 
 
                 <aside className="hidden md:flex w-64 flex-col border-r p-4 bg-muted/30 z-10">

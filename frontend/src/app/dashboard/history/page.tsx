@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useDashboard } from "@/app/context/DashboardContext";
+//import { useDashboard } from "@/app/context/DashboardContext";
+import { Loader2Icon } from "lucide-react";
+import { toast } from "sonner";
 
 type EmailHistoryItem = {
   id: number;
@@ -14,11 +16,10 @@ type EmailHistoryItem = {
 };
 
 export default function HistoryPage() {
-  const { isLoading } = useDashboard();
+  //const { isLoading } = useDashboard();
   const [localHistory, setLocalHistory] = useState<EmailHistoryItem[]>([]);
-
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    // ✅ Datos de ejemplo - correos de marketing
     const exampleData: EmailHistoryItem[] = [
       {
         id: 1,
@@ -61,26 +62,71 @@ export default function HistoryPage() {
         timestamp: new Date().toISOString(),
       },
     ];
+    setIsLoading(true);
+    const timeout = setTimeout(() => {
+      setLocalHistory(exampleData);
+      setIsLoading(false);
+    }, 3400);
 
-    // ⬇️ Activa esta línea si no tienes backend aún
-    setLocalHistory(exampleData);
-
-    // ⬇️ Y comenta esta cuando ya tengas backend funcional
+    return () => clearTimeout(timeout);
     // loadHistory();
   }, []);
 
   const handleDelete = (id: number) => {
+    // Guardamos el item antes de eliminarlo para posible restauración
+    const deletedItem = localHistory.find((item) => item.id === id);
+    if (!deletedItem) return;
+
+    // Eliminación optimista
     setLocalHistory((prev) => prev.filter((item) => item.id !== id));
+
+    // Mostrar loading inicial
+    const toastId = toast.loading("Eliminando nota de crédito...");
+
+    // Configuramos la espera y luego confirmamos eliminación
+    const timeout = setTimeout(() => {
+      toast.dismiss(toastId);
+
+      toast.success("Nota de crédito eliminada correctamente", {
+        action: {
+          label: "Deshacer",
+          onClick: () => {
+            // Restaurar el ítem eliminado si el usuario lo desea
+            setLocalHistory((prev) =>
+              [...prev, deletedItem].sort((a, b) => a.id - b.id)
+            );
+            toast.success("Nota de crédito restaurada");
+          },
+        },
+        duration: 5000, // cuánto tiempo se muestra el toast con 'Deshacer'
+      });
+    }, 2500); // tiempo de eliminación confirmada
+
+    // Limpiar timeout si el componente se desmonta
+    return () => clearTimeout(timeout);
   };
 
   return (
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Historial de Correos de Marketing</h1>
 
-      {isLoading && <p>Cargando...</p>}
+      {isLoading && (
+        <div
+          className="flex flex-col items-center justify-center h-64"
+          role="status"
+          aria-label="Cargando historial"
+        >
+          <Loader2Icon className="animate-spin h-10 w-10 text-gray-500 mb-4" />
+          <p className="text-sm text-muted-foreground">
+            Cargando historial de correos...
+          </p>
+        </div>
+      )}
 
       {localHistory.length === 0 && !isLoading && (
-        <p className="text-muted-foreground">Aún no tienes correos generados.</p>
+        <p className="text-muted-foreground">
+          Aún no tienes correos generados.
+        </p>
       )}
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -100,7 +146,9 @@ export default function HistoryPage() {
                   variant="outline"
                   size="sm"
                   onClick={() =>
-                    navigator.clipboard.writeText(`${item.generatedSubject}\n\n${item.generatedBody}`)
+                    navigator.clipboard.writeText(
+                      `${item.generatedSubject}\n\n${item.generatedBody}`
+                    )
                   }
                 >
                   Copiar

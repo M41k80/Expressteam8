@@ -42,6 +42,7 @@ No devuelvas nada fuera del JSON.`
     });
   } catch (error) {
     console.error("Error llamando a OpenRouter:", error);
-    return NextResponse.json({ error: "Error generando email" }, { status: 500 });
+    const errorMessage = (error instanceof Error) ? error.message : String(error);
+    return NextResponse.json({ error: "Error generando email", details: errorMessage }, { status: 500 });
   }
 }
