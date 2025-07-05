@@ -23,6 +23,8 @@
 <a href="https://www.linkedin.com/in/mateo-baccillere-96036b358/" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
 </a>
+
+
 ### 👥 Wanda ursula gutierrez 📧 wandaugutierrez@gmail.com 💻 Rol: UX/UI Designer
 <a href="https://www.linkedin.com/in/wanda-gutierrez/" target="_blank">
   <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
@@ -30,7 +32,7 @@
 
 
 
-#
+
 
 
 
