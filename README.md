@@ -3,14 +3,30 @@
  🧩 Creadores de la App:
 
 ### 👥 Magdiel Mora 📧 m41k80m@gmail.com 💻 Rol: Frontend 
-[![LinkedIn](https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg)](https://www.linkedin.com/in/jose-magdiel-mora-perez-0384492b9/)
+<a href="https://www.linkedin.com/in/jose-magdiel-mora-perez-0384492b9/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
+</a>
+
 
 ### 👥 Daniel Renato Mamani Pérez 📧 danny2003renato@gmail.com 💻 Rol: Frontend
-[![LinkedIn](https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg)]([https://www.linkedin.com/in/tuusuario](https://www.linkedin.com/in/danielrmp/))
+<a href="https://www.linkedin.com/in/danielrmp/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
+</a>
+
 
 ### 👥 Jeremias Rivelli 📧 jeremias.j.riv@gmail.com 💻 Rol: Backend
+<a href="https://www.linkedin.com/in/rivelli-jeremias/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
+</a>
+
 ### 👥 Mateo Baccillere 📧 mateo.baccillere19@gmail.com 💻 Rol: Backend
+<a href="https://www.linkedin.com/in/mateo-baccillere-96036b358/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
+</a>
 ### 👥 Wanda ursula gutierrez 📧 wandaugutierrez@gmail.com 💻 Rol: UX/UI Designer
+<a href="https://www.linkedin.com/in/wanda-gutierrez/" target="_blank">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" width="32" height="32">
+</a>
 
 
 
