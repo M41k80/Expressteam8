@@ -2,8 +2,12 @@
 <img src="frontend/public/App.png" alt="App logo" width="400"/>
  🧩 Creadores de la App:
 
-### 👥 Magdiel Mora 📧 m41k80m@gmail.com 💻 Rol: Frontend
+### 👥 Magdiel Mora 📧 m41k80m@gmail.com 💻 Rol: Frontend 
+[![LinkedIn](https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg)](https://www.linkedin.com/in/jose-magdiel-mora-perez-0384492b9/)
+
 ### 👥 Daniel Renato Mamani Pérez 📧 danny2003renato@gmail.com 💻 Rol: Frontend
+[![LinkedIn](https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg)]([https://www.linkedin.com/in/tuusuario](https://www.linkedin.com/in/danielrmp/))
+
 ### 👥 Jeremias Rivelli 📧 jeremias.j.riv@gmail.com 💻 Rol: Backend
 ### 👥 Mateo Baccillere 📧 mateo.baccillere19@gmail.com 💻 Rol: Backend
 ### 👥 Wanda ursula gutierrez 📧 wandaugutierrez@gmail.com 💻 Rol: UX/UI Designer
